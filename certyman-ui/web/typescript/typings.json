@@ -1,0 +1,18 @@
+{
+  "globalDependencies": {
+    "chart": "registry:dt/chart#0.0.0+20160316155526",
+    "gapi": "registry:dt/gapi#0.0.0+20160412153822",
+    "gapi.auth2": "registry:dt/gapi.auth2#0.0.0+20160602144801",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
+    "react": "registry:dt/react#0.14.0+20160602151522",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-redux": "registry:dt/react-redux#4.4.0+20160501125835",
+    "react-router": "registry:dt/react-router#2.0.0+20160501155536",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160602154905",
+    "react-tabs": "registry:dt/react-tabs#0.5.3+20160401123029",
+    "redux": "registry:dt/redux#3.3.1+20160326112656",
+    "redux-devtools": "registry:dt/redux-devtools#3.0.0+20151215130854"
+  }
+}
