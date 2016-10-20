@@ -4,16 +4,16 @@ A convoluted way to get certificates with Docker via Let's Encrypt.
 
 ## Purpose
  
-This is yet a another free certificate manager based around Docker. The main thing this does differently is that the certificates are stored in a file, but rather a Redis instance. This allows you to run multiple instances of Nginx/equivalent and serve the same certificate without requesting new ones on the first request.
+This is yet a another free certificate manager based around Docker. The main thing this does differently is that the certificates are not stored in a file, but rather a Redis instance. This allows you to run multiple instances of Nginx/equivalent and serve the same certificate without requesting new ones on the first request.
 
-Certyman runs on just Docker with the help of labeling, with the downside that it's not the most friendly thing to work with since you don't have a framework behind you. There are no releases for Certyman since this was more of an experiment, so if you want to try it out you'll need to build it yourself.
+Certyman uses just Docker with the help of labeling, with the downside that it's not the most friendly thing to work with since you don't have a framework behind you. There are no releases for Certyman since this was more of an experiment, so if you want to try it out you'll need to build it yourself.
 
 ## How it works
 
 1. Start a docker web server with `certyman.domain` set to the domain oyu want
 2. [docker-event-emitter](https://github.com/Deadleg/docker-event-emitter) with pick up the event, and send it to Redis
 3. `Certyman-listener` to receive the event and grab the `certyman.domain` domain along with other networking information Docker provides and put that data into Redis.
-4. (In my case) Openresty with search Redis for the list of domains to be served, and generate certificates if there are none. Certificates are stored in redis as well.
+4. (In my case) Openresty with search Redis for the list of domains to be served, and generate certificates if there are none. Certificates are stored in Redis as well.
 
 ## Usage
 
@@ -22,7 +22,7 @@ Certyman runs on just Docker with the help of labeling, with the downside that i
 - Run one `certyman-listener` with access to Redis
 - (Optional) Run `certyman-ui` for a web page to view the list of domains served.
 
-Once the above are running, all you will need to do is start your Docker containers with the `certyman.domain` set to the domain you wish to route to with TLS (note you cannot use wildcards from Let's Encrypt).
+Once the above are running, all you will need to do is start your Docker containers with the `certyman.domain` set to the domain you wish to route to with TLS (note you cannot use wildcards with Let's Encrypt).
 
 Using Openresty, you can run something like the following to get your certificates served (see [lua-resty-auto-ssl](https://github.com/GUI/lua-resty-auto-ssl)):
 
